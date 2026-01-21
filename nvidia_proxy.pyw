@@ -11,7 +11,7 @@ import urllib.error
 import time
 
 # NVIDIA API 配置
-NVIDIA_API_KEY = "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"
+NVIDIA_API_KEY = "nvapi-XXX"
 NVIDIA_API_URL = "https://integrate.api.nvidia.com/v1/chat/completions"
 
 # 模型映射
