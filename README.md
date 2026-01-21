@@ -52,16 +52,12 @@ python3 nvidia_proxy.pyw
 
 ## 模型映射
 
-：
-
 | CC‑Switch 选择的 Claude 模型 | 实际调用的 NVIDIA 模型 |
 | --- | --- |
 | claude-3-5-sonnet-20241022 | z-ai/glm4.7 |
 | claude-3-5-haiku-20241022 | minimaxai/minimax-m2.1 |
 | claude-3-opus-20240229 | z-ai/glm4.7 |
 | claude-sonnet-4-20250514 | z-ai/glm4.7 |
-
-你
 
 你可以在 `nvidia_proxy.pyw` 中修改 `MODEL_MAPPING` 字典来自定义模型映射。
 
