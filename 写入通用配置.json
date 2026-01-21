@@ -1,0 +1,11 @@
+{
+  "env": {
+    "ANTHROPIC_AUTH_TOKEN": "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",
+    "ANTHROPIC_BASE_URL": "http://127.0.0.1:18080/v1",
+    "ANTHROPIC_MODEL": "claude-3-5-sonnet-20241022",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude-3-opus-20240229",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude-sonnet-4-20250514",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude-3-5-haiku-20241022"
+  },
+  "includeCoAuthoredBy": false
+}
