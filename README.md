@@ -22,7 +22,7 @@ NVIDIA Build 提供了 150+ 免费 AI 模型的 API 访问，但使用的是 Ope
 
 ### 2. 配置 API Key
 
-编辑 `nvidia_proxy_simple.py`，修改第 14 行：
+编辑 `nvidia_proxy.pyw`，修改第 14 行：
 
 ```python
 NVIDIA_API_KEY = "你的-NVIDIA-API-Key"
@@ -31,10 +31,10 @@ NVIDIA_API_KEY = "你的-NVIDIA-API-Key"
 ### 3. 启动代理
 
 ```bash
-python3 nvidia_proxy_simple.py
+python3 nvidia_proxy.pyw
 ```
 
-代理将在 `http://127.0.0.1:8080` 启动。
+代理将在 `http://127.0.0.1:18080` 启动。
 
 ### 4. 配置 CC Switch
 
@@ -43,7 +43,7 @@ python3 nvidia_proxy_simple.py
 | 配置项 | 值 |
 |--------|-----|
 | 供应商名称 | NVIDIA Proxy |
-| 请求地址 | `http://127.0.0.1:8080/v1` |
+| 请求地址 | `http://127.0.0.1:18080/v1` |
 | API Key | `test-key`（任意值） |
 | 主模型 | `claude-3-5-sonnet-20241022` |
 | Haiku 模型 | `claude-3-5-haiku-20241022` |
@@ -52,14 +52,18 @@ python3 nvidia_proxy_simple.py
 
 ## 模型映射
 
-| Claude 模型 | NVIDIA 模型 | 特点 |
-|------------|-------------|------|
-| `claude-3-5-sonnet-20241022` | `qwen/qwen2.5-coder-7b-instruct` | 编程能力强 |
-| `claude-3-5-haiku-20241022` | `google/gemma-3-4b-it` | 轻量快速 |
-| `claude-3-opus-20240229` | `qwen/qwen3-235b-a22b` | 最强性能 |
-| `claude-sonnet-4-20250514` | `qwen/qwen2.5-coder-7b-instruct` | 编程能力强 |
+：
 
-你可以在 `nvidia_proxy_simple.py` 中修改 `MODEL_MAPPING` 字典来自定义模型映射。
+| CC‑Switch 选择的 Claude 模型 | 实际调用的 NVIDIA 模型 |
+| --- | --- |
+| claude-3-5-sonnet-20241022 | z-ai/glm4.7 |
+| claude-3-5-haiku-20241022 | minimaxai/minimax-m2.1 |
+| claude-3-opus-20240229 | z-ai/glm4.7 |
+| claude-sonnet-4-20250514 | z-ai/glm4.7 |
+
+你
+
+你可以在 `nvidia_proxy.pyw` 中修改 `MODEL_MAPPING` 字典来自定义模型映射。
 
 ## 测试
 
@@ -76,7 +80,7 @@ python3 test_cc_switch_proxy.py
 测试 CC Switch 代理
 ============================================================
 
-代理地址: http://127.0.0.1:8080/v1/messages
+代理地址: http://127.0.0.1:18080/v1/messages
 测试模型: claude-3-5-sonnet-20241022
 测试消息: 你好，请用一句话介绍你自己。
 
@@ -146,20 +150,20 @@ CC Switch (Claude API 格式)
 
 ```bash
 # 后台启动
-nohup python3 nvidia_proxy_simple.py > proxy.log 2>&1 &
+nohup python3 nvidia_proxy.pyw > proxy.log 2>&1 &
 
 # 查看日志
 tail -f proxy.log
 
 # 停止代理
-pkill -f nvidia_proxy_simple.py
+pkill -f nvidia_proxy.pyw
 ```
 
 ### Windows
 
 ```powershell
 # 后台启动
-Start-Process python -ArgumentList "nvidia_proxy_simple.py" -WindowStyle Hidden
+Start-Process python -ArgumentList "nvidia_proxy.pyw" -WindowStyle Hidden
 
 # 停止代理
 Stop-Process -Name python -Force
@@ -169,9 +173,9 @@ Stop-Process -Name python -Force
 
 ### 1. 代理启动失败
 
-**问题**：端口 8080 已被占用
+**问题**：端口 18080 已被占用
 
-**解决**：修改 `nvidia_proxy_simple.py` 第 154 行的端口号：
+**解决**：修改 `nvidia_proxy.pyw` 第 154 行的端口号：
 ```python
 PORT = 8081  # 改为其他端口
 ```
@@ -182,7 +186,7 @@ PORT = 8081  # 改为其他端口
 
 **问题**：请求地址配置错误
 
-**解决**：确保请求地址为 `http://127.0.0.1:8080/v1`（注意末尾的 `/v1`）
+**解决**：确保请求地址为 `http://127.0.0.1:18080/v1`（注意末尾的 `/v1`）
 
 ### 3. NVIDIA API 返回 401
 
